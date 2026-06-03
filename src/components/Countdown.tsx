@@ -29,19 +29,19 @@ export function Countdown() {
     <div className="countdown" aria-live="polite">
       <div className="time-box">
         <strong>{parts.days}</strong>
-        <span>Days</span>
+        <span>Hari</span>
       </div>
       <div className="time-box">
         <strong>{pad(parts.hours)}</strong>
-        <span>Hours</span>
+        <span>Jam</span>
       </div>
       <div className="time-box">
         <strong>{pad(parts.minutes)}</strong>
-        <span>Minutes</span>
+        <span>Menit</span>
       </div>
       <div className="time-box">
         <strong>{pad(parts.seconds)}</strong>
-        <span>Seconds</span>
+        <span>Detik</span>
       </div>
     </div>
   );
