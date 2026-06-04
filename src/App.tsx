@@ -57,7 +57,7 @@ function App() {
         <Countdown />
 
         <div className="main-content">
-          {/* Our Story — hanging polaroids */}
+          {/* Story timeline */}
           <OurStory />
 
           {/* Akad & Resepsi */}

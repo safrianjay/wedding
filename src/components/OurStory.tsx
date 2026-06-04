@@ -1,27 +1,65 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, useGSAP } from "../lib/gsap";
 
-type Moment = {
+type Memory = {
   caption: string;
+  image: string;
+  side: "left" | "right";
   year: string;
-  left: number; // % within the board
-  top: number; // % within the board
-  rot: number; // base tilt (deg)
-  z: number; // stacking
-  tone: number; // placeholder photo tone 1..6
-  /** Optional real photo — drop a file in /public and set its path here. */
-  src?: string;
 };
 
-// Replace `tone` placeholders with `src: "/photos/xxx.jpg"` when you have photos.
-const MOMENTS: Moment[] = [
-  { caption: "Pertama Bertemu", year: "2019", left: 1, top: 13, rot: -10, z: 1, tone: 1 },
-  { caption: "Kencan Pertama", year: "2020", left: 20, top: 1, rot: 5, z: 2, tone: 2 },
-  { caption: "Berpetualang", year: "2022", left: 63, top: 3, rot: 9, z: 2, tone: 3 },
-  { caption: "Bertunangan", year: "2024", left: 14, top: 38, rot: 6, z: 3, tone: 4 },
-  { caption: "Lamaran", year: "2025", left: 53, top: 40, rot: -7, z: 3, tone: 5 },
-  { caption: "Menuju Pelaminan", year: "2027", left: 38, top: 20, rot: -3, z: 5, tone: 6 },
+const MEMORY_INTRO =
+  "Dari pertemuan pertama hingga hari yang kami nantikan — setiap kenangan kecil menuntun kami menuju satu janji yang abadi.";
+
+const MEMORIES: Memory[] = [
+  {
+    year: "2018",
+    caption: "Where our story began",
+    image: "/assets/story-2018.jpg",
+    side: "left",
+  },
+  {
+    year: "2019",
+    caption: "From strangers to something special",
+    image: "/assets/story-2019.jpg",
+    side: "right",
+  },
+  {
+    year: "2020",
+    caption: "The first time we said “I love you”",
+    image: "/assets/story-2020.jpg",
+    side: "left",
+  },
+  {
+    year: "2022",
+    caption: "Growing stronger side by side",
+    image: "/assets/story-2022.jpg",
+    side: "right",
+  },
+  {
+    year: "2025",
+    caption: "From a question to a lifetime promise",
+    image: "/assets/story-2025.jpg",
+    side: "left",
+  },
 ];
+
+function MemoryPhoto({ memory }: { memory: Memory }) {
+  return (
+    <figure className="polaroid-card">
+      <img src={memory.image} alt={`Sophia and Ahmad memory from ${memory.year}`} />
+      <figcaption>{memory.year}</figcaption>
+    </figure>
+  );
+}
+
+function MemoryCopy({ caption }: { caption: string }) {
+  return (
+    <div className="memory-copy">
+      <p>{caption}</p>
+    </div>
+  );
+}
 
 export function OurStory() {
   const root = useRef<HTMLElement>(null);
@@ -31,7 +69,6 @@ export function OurStory() {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      // Heading fades up.
       gsap.from(root.current!.querySelectorAll(".story-head > *"), {
         opacity: 0,
         y: 28,
@@ -40,38 +77,44 @@ export function OurStory() {
         stagger: 0.08,
         scrollTrigger: { trigger: root.current, start: "top 80%", once: true },
       });
-
-      const cards = gsap.utils.toArray<HTMLElement>(".polaroid", root.current!);
-      cards.forEach((card, i) => {
-        // Each polaroid drops in from above and settles (it then hangs via CSS).
-        gsap.from(card.querySelector(".polaroid__drop"), {
-          y: -180,
-          autoAlpha: 0,
-          duration: 0.9,
-          ease: "back.out(1.5)",
-          delay: i * 0.09,
-          scrollTrigger: { trigger: ".story-board", start: "top 82%", once: true },
-        });
-
-        // The photo parallaxes within its frame as you scroll past.
-        gsap.fromTo(
-          card.querySelector(".polaroid__img"),
-          { yPercent: -9 },
-          {
-            yPercent: 9,
-            ease: "none",
-            scrollTrigger: {
-              trigger: root.current,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          },
-        );
-      });
     },
     { scope: root },
   );
+
+  useEffect(() => {
+    const section = root.current;
+    if (!section) return;
+
+    const items = Array.from(section.querySelectorAll<HTMLElement>(".memory-item"));
+    if (!items.length) return;
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    ) {
+      items.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 },
+    );
+
+    items.forEach((item, index) => {
+      item.style.transitionDelay = `${Math.min(index * 80, 320)}ms`;
+      observer.observe(item);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="content-band band-center story-section" ref={root} aria-labelledby="storyTitle">
@@ -81,43 +124,36 @@ export function OurStory() {
           <h2 className="section-title" id="storyTitle">
             Our Story
           </h2>
-          <p className="band-intro">
-            Dari pertemuan pertama hingga hari yang kami nantikan &mdash; setiap kenangan kecil
-            menuntun kami menuju satu janji yang abadi.
-          </p>
         </div>
 
-        <div className="story-board">
-          {MOMENTS.map((m) => (
-            <figure
-              className="polaroid"
-              key={m.caption}
-              style={{ left: `${m.left}%`, top: `${m.top}%`, "--rot": `${m.rot}deg`, zIndex: m.z } as React.CSSProperties}
-            >
-              <span className="polaroid__tape" aria-hidden="true" />
-              <div className="polaroid__drop">
-                <div className="polaroid__inner" style={{ "--dur": `${3.6 + m.z * 0.4}s` } as React.CSSProperties}>
-                  <div className="polaroid__photo">
-                    {m.src ? (
-                      <img className="polaroid__img" src={m.src} alt={`${m.caption} ${m.year}`} />
-                    ) : (
-                      <>
-                        <span className={`polaroid__img tone-${m.tone}`} aria-hidden="true" />
-                        <span className="polaroid__heart" aria-hidden="true">
-                          &#10084;
-                        </span>
-                      </>
-                    )}
-                  </div>
-                  <figcaption className="polaroid__caption">
-                    {m.caption}
-                    <span>{m.year}</span>
-                  </figcaption>
-                </div>
-              </div>
-            </figure>
-          ))}
-        </div>
+        <section
+          className="memory-lane-section"
+          id="memory-lane"
+          aria-label="Sophia and Ahmad memory timeline"
+        >
+          <div className="memory-ornament" aria-hidden="true" />
+          <p className="memory-intro">{MEMORY_INTRO}</p>
+
+          <div className="memory-timeline">
+            {MEMORIES.map((memory) => (
+              <article className={`memory-item memory-${memory.side}`} key={memory.year}>
+                {memory.side === "left" ? (
+                  <>
+                    <MemoryCopy caption={memory.caption} />
+                    <div className="memory-node" aria-hidden="true" />
+                    <MemoryPhoto memory={memory} />
+                  </>
+                ) : (
+                  <>
+                    <MemoryPhoto memory={memory} />
+                    <div className="memory-node" aria-hidden="true" />
+                    <MemoryCopy caption={memory.caption} />
+                  </>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );
