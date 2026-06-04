@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { gsap, useGSAP } from "../lib/gsap";
 import { Ornament } from "./Ornament";
 
@@ -8,6 +8,24 @@ type Memory = {
   side: "left" | "right";
   year: string;
 };
+
+/** Scattered "story-board" of hanging polaroids shown as the section finale. */
+type BoardPhoto = {
+  src: string;
+  year: string;
+  left: number; // % within the board
+  top: number; // % within the board
+  rot: number; // tilt (deg)
+  z: number; // stacking
+};
+
+const BOARD: BoardPhoto[] = [
+  { src: "/assets/story-2018.jpg", year: "2018", left: 2, top: 6, rot: -9, z: 2 },
+  { src: "/assets/story-2019.jpg", year: "2019", left: 67, top: 2, rot: 8, z: 3 },
+  { src: "/assets/story-2025.jpg", year: "2025", left: 35, top: 18, rot: -3, z: 6 },
+  { src: "/assets/story-2020.jpg", year: "2020", left: 9, top: 34, rot: 7, z: 2 },
+  { src: "/assets/story-2022.jpg", year: "2022", left: 59, top: 36, rot: -7, z: 4 },
+];
 
 const MEMORY_INTRO =
   "Dari pertemuan pertama hingga hari yang kami nantikan — setiap kenangan kecil menuntun kami menuju satu janji yang abadi.";
@@ -77,6 +95,35 @@ export function OurStory() {
         ease: "power3.out",
         stagger: 0.08,
         scrollTrigger: { trigger: root.current, start: "top 80%", once: true },
+      });
+
+      // Polaroid board: each card drops in and settles (then sways via CSS),
+      // and its photo parallaxes within the frame as you scroll past.
+      const cards = gsap.utils.toArray<HTMLElement>(".polaroid", root.current!);
+      cards.forEach((card, i) => {
+        gsap.from(card.querySelector(".polaroid__drop"), {
+          y: -170,
+          autoAlpha: 0,
+          duration: 0.9,
+          ease: "back.out(1.5)",
+          delay: i * 0.09,
+          scrollTrigger: { trigger: ".story-board", start: "top 85%", once: true },
+        });
+
+        gsap.fromTo(
+          card.querySelector(".polaroid__img"),
+          { yPercent: -8 },
+          {
+            yPercent: 8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".story-board",
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          },
+        );
       });
     },
     { scope: root },
@@ -153,6 +200,42 @@ export function OurStory() {
                   </>
                 )}
               </article>
+            ))}
+          </div>
+
+          <div className="memory-ornament board-divider" aria-hidden="true" />
+
+          <div className="story-board">
+            {BOARD.map((photo) => (
+              <figure
+                className="polaroid"
+                key={photo.year}
+                style={
+                  {
+                    left: `${photo.left}%`,
+                    top: `${photo.top}%`,
+                    zIndex: photo.z,
+                    "--rot": `${photo.rot}deg`,
+                  } as CSSProperties
+                }
+              >
+                <span className="polaroid__tape" aria-hidden="true" />
+                <div className="polaroid__drop">
+                  <div
+                    className="polaroid__inner"
+                    style={{ "--dur": `${3.4 + photo.z * 0.3}s` } as CSSProperties}
+                  >
+                    <div className="polaroid__photo">
+                      <img
+                        className="polaroid__img"
+                        src={photo.src}
+                        alt={`Sophia and Ahmad memory from ${photo.year}`}
+                      />
+                    </div>
+                    <figcaption className="polaroid__caption">{photo.year}</figcaption>
+                  </div>
+                </div>
+              </figure>
             ))}
           </div>
         </section>
