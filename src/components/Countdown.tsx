@@ -30,6 +30,11 @@ export function Countdown() {
       <div className="clock-background" aria-hidden="true" />
 
       <div className="countdown-content">
+        <div className="countdown-head">
+          <p className="countdown-kicker">Counting Down To</p>
+          <h2 className="countdown-title">The Wonderful Date</h2>
+        </div>
+
         <div className="countdown-wrapper" aria-label="Countdown to Sophia and Ahmad wedding" aria-live="polite">
           <div className="countdown-item">
             <span className="countdown-number" id="clock-days">

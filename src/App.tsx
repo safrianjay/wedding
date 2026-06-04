@@ -60,7 +60,7 @@ function App() {
           {/* Story timeline */}
           <OurStory />
 
-          {/* Akad & Resepsi */}
+          {/* Akad & Resepsi — both held at one venue */}
           <section className="content-band band-center reveal" aria-labelledby="acaraTitle">
             <div className="content-inner">
               <p className="section-kicker">Waktu &amp; Tempat</p>
@@ -68,53 +68,54 @@ function App() {
                 Akad &amp; Resepsi
               </h2>
               <Ornament />
-              <div className="detail-grid">
-                <article className="detail-panel">
-                  <h3>Akad Nikah</h3>
-                  <div className="detail-list">
-                    <span>Senin, 21 Juni 2027</span>
-                    <span>Pukul 09.00 &ndash; 10.00 WIB</span>
-                    <span>Mangkunegaran Ballroom</span>
-                    <span>The Dharmawangsa Jakarta</span>
-                  </div>
-                  <a className="ghost-button" href={MAPS_URL} target="_blank" rel="noreferrer">
-                    Buka Peta
-                  </a>
+
+              <div className="event-venue">
+                <p className="event-venue__date">Senin, 21 Juni 2027</p>
+                <h3 className="event-venue__name">The Dharmawangsa Jakarta</h3>
+                <p className="event-venue__addr">
+                  Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta Selatan
+                </p>
+              </div>
+
+              <div className="event-grid">
+                <article className="event-card">
+                  <p className="event-card__label">Akad Nikah</p>
+                  <p className="event-card__time">09.00 &ndash; 10.00 WIB</p>
+                  <p className="event-card__room">Mangkunegaran Ballroom</p>
                 </article>
-                <article className="detail-panel">
-                  <h3>Resepsi</h3>
-                  <div className="detail-list">
-                    <span>Senin, 21 Juni 2027</span>
-                    <span>Pukul 19.00 &ndash; 21.00 WIB</span>
-                    <span>Majapahit Ballroom</span>
-                    <span>The Dharmawangsa Jakarta</span>
-                  </div>
-                  <a className="ghost-button" href={MAPS_URL} target="_blank" rel="noreferrer">
-                    Buka Peta
-                  </a>
+                <span className="event-divider" aria-hidden="true" />
+                <article className="event-card">
+                  <p className="event-card__label">Resepsi</p>
+                  <p className="event-card__time">19.00 &ndash; 21.00 WIB</p>
+                  <p className="event-card__room">Majapahit Ballroom</p>
                 </article>
+              </div>
+
+              <div className="button-row button-row--center">
+                <a className="luxury-button" href={MAPS_URL} target="_blank" rel="noreferrer">
+                  Buka Peta
+                </a>
               </div>
             </div>
           </section>
 
-          {/* Tata busana */}
-          <section className="content-band dress-band reveal" aria-labelledby="dressTitle">
+          {/* Dress code */}
+          <section className="content-band dress-band band-center reveal" aria-labelledby="dressTitle">
             <div className="content-inner">
               <p className="section-kicker">Tata Busana</p>
               <h2 className="section-title" id="dressTitle">
-                Formal Malam
+                Dress Code
               </h2>
               <p className="dress-copy">
-                Dengan penuh hormat, kami mengundang Anda mengenakan busana formal malam &mdash;
-                batik, kebaya, atau setelan formal &mdash; dalam palet ivory, sampanye, emas, merah
-                marun, dan hitam.
+                Dengan penuh hormat, kami mengundang Anda mengenakan busana formal dalam palet
+                lembut berikut &mdash; sage, taupe hangat, ivory, mauve, dan dusty blue.
               </p>
-              <div className="palette" aria-label="Palet tata busana">
-                <span className="swatch" style={{ background: "#fbf7ef" }} title="Ivory" />
-                <span className="swatch" style={{ background: "#dcc8a3" }} title="Sampanye" />
-                <span className="swatch" style={{ background: "#b89452" }} title="Emas" />
-                <span className="swatch" style={{ background: "#8e0f18" }} title="Merah marun" />
-                <span className="swatch" style={{ background: "#1c1716" }} title="Hitam" />
+              <div className="palette" aria-label="Palet dress code">
+                <span className="swatch" style={{ background: "#9aa687" }} title="Sage Green" />
+                <span className="swatch" style={{ background: "#c3a886" }} title="Warm Taupe" />
+                <span className="swatch" style={{ background: "#ece3d1" }} title="Ivory" />
+                <span className="swatch" style={{ background: "#a1939a" }} title="Mauve" />
+                <span className="swatch" style={{ background: "#adbfcd" }} title="Dusty Blue" />
               </div>
             </div>
           </section>
