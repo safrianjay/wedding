@@ -353,8 +353,8 @@ h1 {
   place-items: start center;
   padding: clamp(28px, 5svh, 52px) clamp(14px, 4vw, 28px) clamp(28px, 5svh, 48px);
   background:
-    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.86), transparent 34%),
-    linear-gradient(180deg, var(--ivory) 0%, var(--paper) 44%, var(--ivory-deep) 100%);
+    radial-gradient(circle at 50% 13%, rgba(255, 255, 255, 0.64), transparent 34%),
+    linear-gradient(180deg, #efe3d3 0%, #f4ecdd 12%, var(--paper) 34%, var(--paper) 62%, var(--ivory-deep) 100%);
   isolation: isolate;
 }
 
@@ -365,7 +365,7 @@ h1 {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 250, 241, 0.92) 0%, rgba(255, 250, 241, 0.54) 16%, rgba(255, 250, 241, 0.08) 40%, rgba(251, 247, 239, 0.36) 100%),
+    linear-gradient(180deg, rgba(239, 227, 211, 0.92) 0%, rgba(246, 238, 224, 0.78) 10%, rgba(255, 250, 241, 0.44) 24%, rgba(255, 250, 241, 0.08) 44%, rgba(251, 247, 239, 0.36) 100%),
     linear-gradient(90deg, rgba(184, 148, 82, 0.14), transparent 18%, transparent 82%, rgba(184, 148, 82, 0.14));
 }
 
@@ -906,7 +906,19 @@ h1 {
   padding: clamp(20px, 4vw, 56px);
   background:
     radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.85), transparent 32%),
-    linear-gradient(180deg, #f8f1e8 0%, #efe3d3 100%);
+    linear-gradient(180deg, #f8f1e8 0%, #efe3d3 78%, #efe3d3 100%);
+}
+
+.wedding-hero::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  z-index: 2;
+  height: clamp(150px, 22svh, 260px);
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(239, 227, 211, 0), rgba(239, 227, 211, 0.68) 42%, #efe3d3 100%);
 }
 
 /* Arabian / arabesque side frames — low-contrast warm-gold linework that
