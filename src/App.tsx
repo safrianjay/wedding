@@ -57,46 +57,6 @@ function App() {
         <Countdown />
 
         <div className="main-content">
-          {/* Mempelai */}
-          <section className="content-band band-center reveal" aria-labelledby="coupleTitle">
-            <div className="content-inner">
-              <p className="section-kicker">Mempelai</p>
-              <h2 className="section-title" id="coupleTitle">
-                Putra &amp; Putri Kami
-              </h2>
-              <p className="band-intro">
-                Dengan memohon rahmat dan ridha Allah Subhanahu wa Ta&rsquo;ala, kami bermaksud
-                menyelenggarakan pernikahan putra-putri kami:
-              </p>
-
-              <div className="couple-grid">
-                <article className="couple-card">
-                  <h3 className="couple-name">Sophia Aurelia</h3>
-                  <p className="couple-sub">Putri kedua dari</p>
-                  <p className="couple-parents">
-                    Bapak H. Bambang Wijaya
-                    <br />
-                    &amp; Ibu Hj. Sri Lestari
-                  </p>
-                </article>
-
-                <div className="couple-amp" aria-hidden="true">
-                  &amp;
-                </div>
-
-                <article className="couple-card">
-                  <h3 className="couple-name">Ahmad Rizky Pratama</h3>
-                  <p className="couple-sub">Putra pertama dari</p>
-                  <p className="couple-parents">
-                    Bapak H. Surya Darmawan
-                    <br />
-                    &amp; Ibu Hj. Ratna Dewi
-                  </p>
-                </article>
-              </div>
-            </div>
-          </section>
-
           {/* Our Story — hanging polaroids */}
           <OurStory />
 

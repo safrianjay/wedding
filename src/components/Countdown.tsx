@@ -56,6 +56,8 @@ export function Countdown() {
             <span className="countdown-label">Seconds</span>
           </div>
         </div>
+
+        <p className="clock-date-detail">Monday, 21 June 2027</p>
       </div>
     </section>
   );
