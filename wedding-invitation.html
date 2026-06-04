@@ -11,13 +11,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         --envelope-image: url('/assets/envelope-sa-wax-seal.svg');
         --above-fold-image: url('/assets/above-fold-save-the-date.svg');
+        --clock-bg-image: url('/assets/clock-tree-background.png');
         --ivory: #fbf7ef;
         --ivory-deep: #efe5d4;
         --paper: #fffaf1;
@@ -892,13 +893,162 @@
         text-align: center;
       }
 
-      .countdown {
+      .countdown-clock-section {
+        position: relative;
+        min-height: 100svh;
+        width: 100%;
+        overflow: hidden;
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: clamp(0.65rem, 2.2vw, 1rem);
+        place-items: start center;
+        padding: clamp(72px, 10svh, 118px) 20px 52px;
+        background:
+          radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.78), transparent 35%),
+          radial-gradient(circle at 22% 44%, rgba(255, 255, 255, 0.32), transparent 25%),
+          linear-gradient(180deg, #fdebf1 0%, #f9dde7 54%, #f7d7e3 100%);
+        isolation: isolate;
       }
 
-      .time-box,
+      .countdown-clock-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.32), transparent 12%),
+          radial-gradient(circle at 84% 78%, rgba(255, 255, 255, 0.22), transparent 18%),
+          linear-gradient(120deg, rgba(255, 255, 255, 0.18), transparent 36%, rgba(255, 255, 255, 0.14));
+        mix-blend-mode: soft-light;
+      }
+
+      .clock-background {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background-image: var(--clock-bg-image);
+        background-repeat: no-repeat;
+        background-position: center 48%;
+        background-size: min(124vw, 620px) auto;
+        opacity: 0;
+        transform: translateY(22px) scale(0.985);
+        filter:
+          drop-shadow(0 24px 44px rgba(138, 77, 88, 0.1))
+          saturate(0.96)
+          contrast(0.99);
+        animation: fadeInClockBg 1200ms var(--ease-luxury) 520ms forwards;
+      }
+
+      .countdown-content {
+        position: relative;
+        z-index: 2;
+        width: min(92vw, 540px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-title {
+        position: relative;
+        z-index: 2;
+        margin: 0 0 clamp(30px, 5svh, 54px);
+        text-align: center;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 900ms var(--ease-luxury) 120ms forwards;
+      }
+
+      .hero-title .kicker {
+        margin-bottom: 10px;
+        color: rgba(113, 72, 82, 0.34);
+        font-size: clamp(9px, 2.4vw, 12px);
+        font-weight: 600;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+      }
+
+      .hero-title h2 {
+        margin: 0;
+        color: rgba(96, 58, 69, 0.36);
+        font-family: 'Great Vibes', cursive;
+        font-size: clamp(38px, 10vw, 64px);
+        font-weight: 400;
+        line-height: 1;
+        text-shadow: 0 10px 28px rgba(255, 255, 255, 0.45);
+      }
+
+      .countdown-wrapper {
+        width: min(92vw, 520px);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: clamp(13px, 4.6vw, 36px);
+        margin-bottom: clamp(260px, 36svh, 380px);
+        text-align: center;
+        opacity: 0;
+        transform: translateY(18px);
+        animation: fadeUp 900ms var(--ease-luxury) 280ms forwards;
+      }
+
+      .countdown-item {
+        display: grid;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .countdown-number {
+        color: rgba(113, 72, 82, 0.55);
+        font-family: var(--serif);
+        font-size: clamp(32px, 9vw, 60px);
+        font-variant-numeric: tabular-nums;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        text-shadow: 0 14px 28px rgba(255, 255, 255, 0.52);
+      }
+
+      .countdown-label {
+        color: rgba(113, 72, 82, 0.36);
+        font-size: clamp(7px, 2vw, 11px);
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .below-copy {
+        width: min(90vw, 480px);
+        text-align: center;
+        opacity: 0;
+        transform: translateY(18px);
+        animation: fadeUp 900ms var(--ease-luxury) 820ms forwards;
+      }
+
+      .below-copy .script {
+        margin-bottom: 8px;
+        color: rgba(96, 58, 69, 0.42);
+        font-family: 'Great Vibes', cursive;
+        font-size: clamp(36px, 10vw, 62px);
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .below-copy p {
+        margin: 0;
+        color: rgba(113, 72, 82, 0.32);
+        font-size: clamp(10px, 2.8vw, 13px);
+        font-weight: 600;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .below-copy .date {
+        margin-top: 14px;
+        color: rgba(113, 72, 82, 0.48);
+        font-family: var(--serif);
+        font-size: clamp(18px, 5vw, 28px);
+        letter-spacing: 0.16em;
+      }
+
       .detail-panel,
       .rsvp-panel,
       .location-panel {
@@ -908,31 +1058,6 @@
           repeating-linear-gradient(90deg, rgba(142, 120, 96, 0.035) 0 1px, transparent 1px 11px),
           var(--paper);
         box-shadow: 0 18px 48px rgba(65, 42, 28, 0.1);
-      }
-
-      .time-box {
-        min-height: 6rem;
-        padding: clamp(1rem, 4vw, 1.4rem) 0.65rem;
-        text-align: center;
-      }
-
-      .time-box strong {
-        display: block;
-        color: var(--deep-red);
-        font-family: var(--serif);
-        font-size: clamp(2.1rem, 8vw, 4rem);
-        font-weight: 600;
-        line-height: 0.85;
-      }
-
-      .time-box span {
-        display: block;
-        margin-top: 0.65rem;
-        color: var(--taupe);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
       }
 
       .section-title {
@@ -1226,6 +1351,20 @@
       :focus-visible {
         outline: 2px solid var(--gold);
         outline-offset: 3px;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInClockBg {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
 
       @keyframes seal-breathe {
@@ -1542,14 +1681,9 @@
       }
 
       @media (max-width: 760px) {
-        .countdown,
         .detail-grid,
         .rsvp-location-grid {
           grid-template-columns: 1fr;
-        }
-
-        .countdown {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .hero-section {
@@ -1558,6 +1692,15 @@
       }
 
       @media (min-width: 760px) {
+        .countdown-clock-section {
+          padding-top: 96px;
+        }
+
+        .clock-background {
+          background-position: center 50%;
+          background-size: min(70vw, 660px) auto;
+        }
+
         .hero-section {
           padding: clamp(1.5rem, 4vw, 3rem);
         }
@@ -1570,6 +1713,19 @@
       }
 
       @media (max-width: 430px) {
+        .countdown-clock-section {
+          padding-right: 16px;
+          padding-left: 16px;
+        }
+
+        .countdown-wrapper {
+          column-gap: 8px;
+        }
+
+        .countdown-label {
+          letter-spacing: 0.2em;
+        }
+
         .inner-card {
           width: min(82vw, 360px);
           padding-inline: 0.9rem;
@@ -1588,6 +1744,14 @@
           animation-iteration-count: 1 !important;
           scroll-behavior: auto !important;
           transition-duration: 1ms !important;
+        }
+
+        .hero-title,
+        .countdown-wrapper,
+        .clock-background,
+        .below-copy {
+          opacity: 1 !important;
+          transform: none !important;
         }
       }
     </style>
@@ -1618,7 +1782,7 @@
         <article class="inner-card" aria-label="Sophia and Ahmad invitation card">
           <p class="card-kicker">The Wedding Celebration of</p>
           <h2 class="card-names">S&amp;A</h2>
-          <p class="card-detail">Sophia &amp; Ahmad<br />24 August 2026</p>
+          <p class="card-detail">Sophia &amp; Ahmad<br />21 June 2027</p>
         </article>
         <button
           class="wax-hit-area"
@@ -1647,6 +1811,42 @@
         <h1 class="sr-only" id="heroTitle">Save the Date, Sophia and Ahmad</h1>
       </section>
 
+      <section class="countdown-clock-section" aria-label="Countdown to Sophia and Ahmad wedding">
+        <div class="clock-background" aria-hidden="true"></div>
+
+        <div class="countdown-content">
+          <header class="hero-title">
+            <div class="kicker">The Wedding of</div>
+            <h2>Sophia &amp; Ahmad</h2>
+          </header>
+
+          <div class="countdown-wrapper" aria-label="Countdown to Sophia and Ahmad wedding">
+            <div class="countdown-item">
+              <span class="countdown-number" id="clock-days">000</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="clock-hours">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="clock-minutes">00</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="clock-seconds">00</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+
+          <div class="below-copy">
+            <div class="script">Details of the day</div>
+            <p>Everything you need to know</p>
+            <div class="date">21.06.2027</div>
+          </div>
+        </div>
+      </section>
+
       <div class="main-content">
         <section class="content-band" aria-label="Formal invitation">
           <div class="content-inner">
@@ -1654,31 +1854,6 @@
               Together with their families, Sophia and Ahmad invite you to an intimate celebration
               of love, family, and new beginnings.
             </p>
-          </div>
-        </section>
-
-        <section class="content-band" aria-labelledby="countdownTitle">
-          <div class="content-inner">
-            <p class="section-kicker">Counting the moments</p>
-            <h2 class="section-title" id="countdownTitle">Until we gather</h2>
-            <div class="countdown" aria-live="polite">
-              <div class="time-box">
-                <strong id="days">0</strong>
-                <span>Days</span>
-              </div>
-              <div class="time-box">
-                <strong id="hours">0</strong>
-                <span>Hours</span>
-              </div>
-              <div class="time-box">
-                <strong id="minutes">0</strong>
-                <span>Minutes</span>
-              </div>
-              <div class="time-box">
-                <strong id="seconds">0</strong>
-                <span>Seconds</span>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -1690,7 +1865,7 @@
               <article class="detail-panel">
                 <h3>Ceremony</h3>
                 <div class="detail-list">
-                  <span>Saturday, 24 August 2026</span>
+                  <span>Monday, 21 June 2027</span>
                   <span>Four o'clock in the afternoon</span>
                   <span>The Dharmawangsa Jakarta</span>
                 </div>
@@ -1706,7 +1881,7 @@
               <article class="detail-panel">
                 <h3>Reception</h3>
                 <div class="detail-list">
-                  <span>Saturday, 24 August 2026</span>
+                  <span>Monday, 21 June 2027</span>
                   <span>Six-thirty in the evening</span>
                   <span>The Dharmawangsa Jakarta</span>
                 </div>
@@ -1857,12 +2032,6 @@
       const rsvpClose = document.getElementById('rsvpClose');
       const rsvpForm = document.getElementById('rsvpForm');
       const successMessage = document.getElementById('successMessage');
-      const countdownNodes = {
-        days: document.getElementById('days'),
-        hours: document.getElementById('hours'),
-        minutes: document.getElementById('minutes'),
-        seconds: document.getElementById('seconds'),
-      };
 
       let invitationOpened = false;
       let lastFocusedElement = null;
@@ -1897,19 +2066,32 @@
         }, 6800);
       }
 
-      function updateCountdown() {
-        const weddingDate = new Date('2026-08-24T00:00:00+07:00');
-        const diff = Math.max(weddingDate.getTime() - Date.now(), 0);
-        const totalSeconds = Math.floor(diff / 1000);
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
+      function initWeddingCountdown() {
+        const targetDate = new Date('2027-06-21T00:00:00+07:00').getTime();
+        const daysEl = document.getElementById('clock-days');
+        const hoursEl = document.getElementById('clock-hours');
+        const minutesEl = document.getElementById('clock-minutes');
+        const secondsEl = document.getElementById('clock-seconds');
 
-        countdownNodes.days.textContent = String(days);
-        countdownNodes.hours.textContent = String(hours).padStart(2, '0');
-        countdownNodes.minutes.textContent = String(minutes).padStart(2, '0');
-        countdownNodes.seconds.textContent = String(seconds).padStart(2, '0');
+        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) {
+          return;
+        }
+
+        function updateCountdown() {
+          const distance = Math.max(targetDate - Date.now(), 0);
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((distance / (1000 * 60)) % 60);
+          const seconds = Math.floor((distance / 1000) % 60);
+
+          daysEl.textContent = String(days).padStart(2, '0');
+          hoursEl.textContent = String(hours).padStart(2, '0');
+          minutesEl.textContent = String(minutes).padStart(2, '0');
+          secondsEl.textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        window.setInterval(updateCountdown, 1000);
       }
 
       function openRsvpModal() {
@@ -1954,8 +2136,7 @@
         rsvpForm.reset();
       });
 
-      updateCountdown();
-      window.setInterval(updateCountdown, 1000);
+      initWeddingCountdown();
     </script>
   </body>
 </html>

@@ -302,162 +302,6 @@ a {
   transform: translateY(0);
 }
 
-.hero-section {
-  position: relative;
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: clamp(4.5rem, 12vw, 7rem) clamp(1.25rem, 5vw, 4rem);
-  overflow: hidden;
-  color: var(--soft-black);
-  background:
-    radial-gradient(circle at 50% 15%, #fffdf8, transparent 58%),
-    radial-gradient(circle at 50% 122%, rgba(184, 148, 82, 0.16), transparent 56%),
-    linear-gradient(180deg, var(--paper) 0%, var(--ivory) 52%, var(--ivory-deep) 100%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-  width: min(100%, 760px);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.hero-section h1 {
-  font-size: clamp(4rem, 16vw, 8rem);
-}
-
-/* Gold botanical corners */
-.hero-botanicals {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  color: var(--gold);
-  pointer-events: none;
-}
-
-.hero-sprig {
-  position: absolute;
-  width: clamp(120px, 26vw, 280px);
-  height: auto;
-  opacity: 0.8;
-}
-
-.hero-sprig--tl {
-  top: 0;
-  left: 0;
-}
-
-.hero-sprig--tr {
-  top: 0;
-  right: 0;
-  transform: scaleX(-1);
-}
-
-.hero-sprig--bl {
-  bottom: 0;
-  left: 0;
-  transform: scaleY(-1);
-}
-
-.hero-sprig--br {
-  bottom: 0;
-  right: 0;
-  transform: scale(-1, -1);
-}
-
-/* Monogram */
-.hero-monogram {
-  display: inline-grid;
-  place-items: center;
-  width: clamp(3.6rem, 12vw, 4.6rem);
-  aspect-ratio: 1;
-  margin: 0 auto clamp(1rem, 3vw, 1.4rem);
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  color: var(--gold);
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 4vw, 1.5rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  box-shadow: 0 0 0 4px rgba(184, 148, 82, 0.1);
-}
-
-/* Gold divider */
-.hero-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  max-width: 260px;
-  margin: clamp(1rem, 3vw, 1.5rem) auto;
-}
-
-.hero-divider > span:not(.hero-divider__diamond) {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.hero-divider__diamond {
-  flex: 0 0 auto;
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-  transform: rotate(45deg);
-}
-
-/* Scroll cue */
-.hero-scroll {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(1.4rem, 4vw, 2.4rem);
-  z-index: 3;
-  transform: translateX(-50%);
-  display: grid;
-  justify-items: center;
-  gap: 0.55rem;
-  color: var(--taupe);
-}
-
-.hero-scroll span {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-}
-
-.hero-scroll i {
-  width: 11px;
-  height: 11px;
-  border-right: 1px solid var(--gold);
-  border-bottom: 1px solid var(--gold);
-  transform: rotate(45deg);
-  animation: scroll-bounce 1800ms ease-in-out infinite;
-}
-
-@keyframes scroll-bounce {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: rotate(45deg) translate(0, 0);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(45deg) translate(3px, 3px);
-  }
-}
-
-.eyebrow {
-  margin: 0;
-  color: var(--gold);
-  font-size: clamp(0.72rem, 2vw, 0.82rem);
-  font-weight: 700;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-}
-
 h1,
 h2,
 h3,
@@ -472,16 +316,6 @@ h1 {
   font-size: clamp(4rem, 17vw, 9rem);
   font-weight: 600;
   line-height: 0.82;
-}
-
-.hero-meta {
-  display: grid;
-  gap: 0.35rem;
-  margin: 0;
-  color: var(--soft-black);
-  font-family: var(--serif);
-  font-size: clamp(1.25rem, 4vw, 1.8rem);
-  line-height: 1.25;
 }
 
 .main-content {
@@ -925,269 +759,210 @@ h1 {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Save The Date — flat-lay hero                                      */
+/*  Above-the-fold — Save The Date invitation scene                    */
 /* ------------------------------------------------------------------ */
 
-.std {
+.wedding-hero {
   position: relative;
   min-height: 100svh;
   display: grid;
+  grid-template: 1fr / 1fr;
   place-items: center;
-  padding: 0;
   overflow: hidden;
-  background: #ece7e1;
-}
-
-.std-scene {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  min-height: 100svh;
-  overflow: hidden;
-}
-
-.std-art-shell {
-  position: relative;
-  z-index: 2;
-  width: min(100vw, calc(100svh * 941 / 1672));
-  height: min(100svh, calc(100vw * 1672 / 941));
-  min-height: 100svh;
-}
-
-.std-art {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: drop-shadow(0 24px 50px rgba(54, 47, 35, 0.16));
-}
-
-.std-art-glow {
-  position: absolute;
-  inset: auto 0 -14svh;
-  z-index: 1;
-  height: 46svh;
-  opacity: 0.72;
+  padding: clamp(20px, 4vw, 56px);
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.78), transparent 58%),
-    radial-gradient(ellipse at 50% 45%, rgba(141, 99, 38, 0.2), transparent 62%);
-  filter: blur(18px);
+    radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.85), transparent 32%),
+    linear-gradient(180deg, #f8f1e8 0%, #efe3d3 100%);
+}
+
+/* Arabian / arabesque side frames — low-contrast warm-gold linework that
+   sits behind the card in the side margins, never over the artwork. */
+.arabesque-frame {
+  position: absolute;
+  top: 7%;
+  bottom: 7%;
+  z-index: 0;
+  width: min(22vw, 168px);
+  opacity: 0.14;
+  pointer-events: none;
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: 116px auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none' stroke='%239c7a3f' stroke-width='1.1'%3E%3Crect x='30' y='30' width='60' height='60'/%3E%3Cpath d='M60 12 108 60 60 108 12 60Z'/%3E%3Ccircle cx='60' cy='60' r='7'/%3E%3Cpath d='M60 0V12M60 108V120'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 8px 24px rgba(120, 99, 51, 0.08));
+}
+
+.arabesque-frame--left {
+  left: 0;
+}
+
+.arabesque-frame--right {
+  right: 0;
+}
+
+/* warm aura bloom, centred behind the card */
+.hero-aura {
+  grid-area: 1 / 1;
+  z-index: 0;
+  width: min(86vw, 760px);
+  max-width: 92svh;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 252, 245, 0.92), transparent 56%),
+    radial-gradient(circle at 50% 60%, rgba(166, 124, 58, 0.16), transparent 64%);
+  filter: blur(26px);
   pointer-events: none;
 }
 
-@media (min-width: 760px) {
-  .std {
-    padding: clamp(1.5rem, 4vw, 3rem);
-  }
-
-  .std-art-shell {
-    width: min(72vw, calc(100svh * 941 / 1672));
-    height: min(100svh, calc(72vw * 1672 / 941));
-    min-height: auto;
-  }
-}
-
-/* striped card */
-.std-card {
-  position: absolute;
-  left: 42%;
-  top: 5%;
-  width: 54%;
-  height: 72%;
-  z-index: 1;
-  background: #fdfbf5;
-  box-shadow: 0 22px 54px rgba(60, 58, 30, 0.16);
-}
-
-.std-card__stripes {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 5.5cqw;
-  background: repeating-linear-gradient(90deg, #6f743f 0 1.3cqw, transparent 1.3cqw 2.7cqw);
-}
-
-.std-card__inner {
-  position: absolute;
-  inset: 5.5cqw 3cqw 4cqw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.5cqw;
-  padding: 2.6cqw 1.5cqw 2cqw;
-  border: 1.6px solid #717544;
-  text-align: center;
-}
-
-.std-card__line {
-  width: 100%;
-}
-
-.std-kicker {
-  margin: 0 0 1.4cqw;
-  color: #4a4a3c;
-  font-family: var(--serif);
-  font-size: 2.2cqw;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-}
-
-.std-names {
-  margin: 0;
-  color: #2c2c26;
-  font-family: 'Pinyon Script', cursive;
-  font-weight: 400;
-  font-size: 6cqw;
-  line-height: 1;
-}
-
-.std-amp {
-  margin: 0;
-  color: #6f743f;
-  font-family: 'Pinyon Script', cursive;
-  font-size: 3.6cqw;
-  line-height: 0.9;
-}
-
-/* olive open envelope */
-.std-envelope {
-  position: absolute;
-  left: 3%;
-  top: 41%;
-  width: 76%;
-  height: 58%;
-  z-index: 2;
-  border-radius: 4px 4px 8px 8px;
-  background:
-    repeating-linear-gradient(48deg, rgba(255, 255, 255, 0.04) 0 2px, transparent 2px 5px),
-    linear-gradient(165deg, #868a47 0%, #6f743a 46%, #595d2c 100%);
-  box-shadow:
-    inset 0 8px 24px rgba(30, 32, 12, 0.4),
-    0 26px 50px rgba(50, 52, 22, 0.28);
-}
-
-/* front flap: a downward V occupying the lower half */
-.std-env__flap {
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(0 6%, 50% 64%, 100% 6%, 100% 100%, 0 100%);
-  background: linear-gradient(165deg, #7c8040 0%, #646831 70%, #50531f 100%);
-  box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.06);
-}
-
-/* the two upper flap seams */
-.std-env__seam {
-  position: absolute;
-  top: 0;
-  width: 58%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(40, 42, 16, 0.45));
-  transform-origin: top;
-}
-
-.std-env__seam--l {
-  left: 0;
-  transform: rotate(38deg);
-}
-
-.std-env__seam--r {
-  right: 0;
-  transform: rotate(-38deg);
-  background: linear-gradient(90deg, rgba(40, 42, 16, 0.45), transparent);
-}
-
-.std-env__seal {
-  position: absolute;
-  left: 50%;
-  bottom: 4%;
-  width: 9cqw;
-  aspect-ratio: 1 / 1.15;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(circle at 42% 36%, #f3ede0, #ddd2bb);
-  box-shadow: inset 0 -3px 8px rgba(90, 80, 50, 0.3);
-}
-
-/* embossed peony */
-.std-peony {
-  position: absolute;
-  left: -9%;
-  top: 23%;
-  width: 28%;
-  z-index: 3;
-  filter: drop-shadow(0 12px 18px rgba(70, 60, 30, 0.12));
-}
-
-/* ornate oval frame + couple photo */
-.std-frame {
-  position: absolute;
-  left: 7%;
-  top: 11%;
-  width: 41%;
-  aspect-ratio: 520 / 620;
-  z-index: 4;
-  filter: drop-shadow(0 20px 30px rgba(50, 40, 20, 0.26));
-}
-
-.std-photo {
-  position: absolute;
-  inset: 10.5% 13%;
-  border-radius: 50%;
-  background:
-    var(--std-photo, linear-gradient(165deg, #4a4f3e 0%, #2a2d22 55%, #14160f 100%));
-  background-size: cover;
-  background-position: center;
-}
-
-.std-frame__ring {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* maroon scalloped heart date badge */
-.std-heart {
-  position: absolute;
-  left: 27%;
-  top: 55%;
-  width: 35%;
-  aspect-ratio: 580 / 470;
-  z-index: 5;
-  display: grid;
-  place-items: center;
-  filter: drop-shadow(0 16px 24px rgba(60, 10, 18, 0.3));
-}
-
-.std-heart__shape {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.std-heart__date {
+/* the SVG sits on a centred square stage */
+.svg-stage {
+  grid-area: 1 / 1;
   position: relative;
-  margin-top: 4cqw;
-  color: #f5ece0;
-  font-family: var(--serif);
-  font-size: 6cqw;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  z-index: 1;
+  width: min(92vw, 720px);
+  max-width: 86svh;
+  aspect-ratio: 1 / 1;
 }
 
-/* floral cluster */
-.std-florals {
+.svg-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(54, 40, 22, 0.22));
+}
+
+/* a single soft light sheen drawn across the card once it has settled */
+.svg-art__sheen {
   position: absolute;
-  left: 62%;
-  top: 39%;
-  width: 41%;
-  z-index: 6;
-  filter: drop-shadow(0 16px 24px rgba(50, 40, 20, 0.2));
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.38) 50%,
+    transparent 60%
+  );
+  background-size: 240% 100%;
+  background-position: 175% 0;
+  mix-blend-mode: soft-light;
+}
+
+/* ---------- staged reveal: hidden initial states ---------- */
+.wedding-hero .hero-aura,
+.wedding-hero .svg-art,
+.wedding-hero .arabesque-frame {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.wedding-hero .hero-aura {
+  transform: scale(0.86);
+}
+
+.wedding-hero .svg-art {
+  transform: translateY(28px) scale(0.98);
+}
+
+.wedding-hero .arabesque-frame {
+  transform: translateY(18px);
+}
+
+/* ---------- staged reveal: play once the hero is visible ---------- *
+ * The artwork is one flat SVG, so the scene is brought to life as a
+ * choreographed sequence on the real layers: aura blooms, the card lifts
+ * and settles, the side frames fade in, then a soft light sheen passes.   */
+.wedding-hero.is-visible .hero-aura {
+  animation: heroAura 1200ms var(--ease-luxury) forwards;
+}
+
+.wedding-hero.is-visible .svg-art {
+  animation: revealEnvelope 1000ms var(--ease-luxury) 150ms forwards;
+}
+
+.wedding-hero.is-visible .arabesque-frame {
+  animation: revealFrame 900ms var(--ease-luxury) 600ms forwards;
+}
+
+.wedding-hero.is-visible .svg-art__sheen {
+  animation: heroSheen 1500ms var(--ease-luxury) 1150ms forwards;
+}
+
+@keyframes heroAura {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes revealEnvelope {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes revealFrame {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 0.14;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSheen {
+  0% {
+    opacity: 0;
+    background-position: 175% 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-position: -75% 0;
+  }
+}
+
+@media (min-width: 760px) {
+  .arabesque-frame {
+    width: min(18vw, 168px);
+  }
+}
+
+/* honour reduced-motion: present the final composition, no movement */
+@media (prefers-reduced-motion: reduce) {
+  .wedding-hero .hero-aura,
+  .wedding-hero .svg-art {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .wedding-hero .arabesque-frame {
+    opacity: 0.14 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .wedding-hero .svg-art__sheen {
+    opacity: 0 !important;
+    animation: none !important;
+  }
 }
 
 .gift-grid {

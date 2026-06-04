@@ -1,40 +1,53 @@
-import { useRef } from "react";
-import { gsap, useGSAP } from "../lib/gsap";
+import { useEffect, useState } from "react";
 
 /**
- * Above-the-fold save-the-date artwork. The supplied SVG is the design source of
- * truth, so the section presents it directly instead of rebuilding it from parts.
+ * Above-the-fold "Save the Date" scene.
+ *
+ * The supplied artwork is a single flat SVG (the envelope, oval couple photo,
+ * florals and card lettering are all baked into one tracing), so it is shown as
+ * one hero image rather than rebuilt from parts. It is brought to life with a
+ * staged, non-bouncy reveal — warm aura → card lift/settle → arabesque side
+ * frames → a soft light sheen — driven by the `.is-visible` class.
+ *
+ * The reveal is gated on `ready`, which App flips only after the envelope intro
+ * is opened, so the existing tap-to-open flow is preserved. Reduced-motion users
+ * are served the final composition with no movement (see index.css).
  */
 export function SaveTheDate({ ready }: { ready: boolean }) {
-  const root = useRef<HTMLElement>(null);
+  const [revealed, setRevealed] = useState(false);
 
-  useGSAP(
-    () => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce || !ready) return;
-
-      const tl = gsap.timeline({ delay: 0.15, defaults: { ease: "power3.out" } });
-      tl.from(".std-art-shell", { y: 36, autoAlpha: 0, duration: 1 })
-        .from(".std-art", { scale: 0.985, duration: 1.1 }, "<")
-        .from(".std-art-glow", { autoAlpha: 0, scale: 0.8, duration: 1.2 }, "<");
-    },
-    { scope: root, dependencies: [ready] },
-  );
+  useEffect(() => {
+    if (!ready) return;
+    // Let the hidden initial state paint for one frame, then play the reveal.
+    const id = requestAnimationFrame(() => setRevealed(true));
+    return () => cancelAnimationFrame(id);
+  }, [ready]);
 
   return (
-    <section className="std" ref={root} aria-labelledby="stdTitle">
+    <section
+      className={`wedding-hero${revealed ? " is-visible" : ""}`}
+      id="weddingHero"
+      aria-labelledby="stdTitle"
+    >
       <h1 className="sr-only" id="stdTitle">
-        Save the Date, Sophia and Ahmad
+        Save the Date — Sophia &amp; Ahmad, 21.06.2027
       </h1>
-      <div className="std-scene">
-        <div className="std-art-glow" aria-hidden="true" />
-        <div className="std-art-shell">
-          <img
-            className="std-art"
-            src="/assets/above-fold-save-the-date.svg"
-            alt="Save the Date artwork for Sophia and Ahmad"
-          />
-        </div>
+
+      <div className="arabesque-frame arabesque-frame--left" aria-hidden="true" />
+      <div className="arabesque-frame arabesque-frame--right" aria-hidden="true" />
+
+      <div className="hero-aura" aria-hidden="true" />
+
+      <div className="svg-stage">
+        <img
+          className="svg-art"
+          src="/assets/sophia-ahmad-invitation.svg"
+          alt="Save the Date invitation for Sophia and Ahmad on 21 June 2027 — an olive envelope holding the couple's oval photo, an ivory card and florals"
+          width={1254}
+          height={1254}
+          draggable={false}
+        />
+        <span className="svg-art__sheen" aria-hidden="true" />
       </div>
     </section>
   );
