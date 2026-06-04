@@ -10,10 +10,9 @@ type Props = {
 };
 
 /**
- * Realistic "tap to open" envelope:
- *   wax seal pops off → top flap rotates open in 3D → the card slides up out
- *   of the envelope → gentle push-in hand-off to the site.
- * One GSAP timeline owns the whole gesture; Lenis is locked while it plays.
+ * Full-screen embossed cover that opens vertically: the wax seal breaks, then
+ * the top half lifts away and the bottom half drops, parting down the seam to
+ * reveal the invitation behind. Lenis is locked while it plays.
  */
 export function EnvelopeIntro({ onReveal, onDone }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -21,14 +20,12 @@ export function EnvelopeIntro({ onReveal, onDone }: Props) {
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const lenis = useLenis();
 
-  // Lock scrolling while the overlay is mounted.
   useEffect(() => {
     lenis?.stop();
     window.scrollTo(0, 0);
     return () => lenis?.start();
   }, [lenis]);
 
-  // Kill the timeline if we unmount mid-flight.
   useEffect(
     () => () => {
       tlRef.current?.kill();
@@ -55,77 +52,73 @@ export function EnvelopeIntro({ onReveal, onDone }: Props) {
     if (reduce) {
       tlRef.current = gsap
         .timeline()
+        .set(q(".cover-top"), { yPercent: -100 })
+        .set(q(".cover-bottom"), { yPercent: 100 })
+        .set([q(".seal"), q(".tap-cue")], { autoAlpha: 0 })
         .add(reveal)
         .to(root, { autoAlpha: 0, duration: 0.3 })
         .add(onDone);
       return;
     }
 
-    // Absolute timings (seconds) so each physical beat is easy to tune.
+    // Absolute timings (seconds).
     tlRef.current = gsap
       .timeline()
-      // the wax "clicks" as you press it
+      // the wax presses, then breaks and lifts off the seam
       .to(q(".seal"), { scale: 0.95, duration: 0.12, ease: "power2.in" }, 0)
-      // flap lifts to ~vertical (resisting, slow-in like a real paper hinge)
-      .to(q(".env__flap"), { rotateX: -88, duration: 0.55, ease: "power1.in" }, 0.12)
-      // the seal rides up and back with the flap, then falls away
-      .to(
-        q(".seal"),
-        { yPercent: -48, rotation: -26, autoAlpha: 0, duration: 0.72, ease: "power1.inOut" },
-        0.12,
+      .to(q(".seal"), { scale: 1.18, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 0.12)
+      .to(q(".tap-cue"), { autoAlpha: 0, duration: 0.3 }, 0.3)
+      // a line of gold light cracks along the seam
+      .fromTo(
+        q(".cover-seam"),
+        { autoAlpha: 0, scaleX: 0.35 },
+        { autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power2.out" },
+        0.28,
       )
-      // once past vertical the flap belongs behind the card it's revealing
-      .set(q(".env__flap"), { zIndex: 0 }, 0.62)
-      // ...then tips over and falls open, settling flat (gravity-like out-ease)
-      .to(q(".env__flap"), { rotateX: -176, duration: 0.6, ease: "power2.out" }, 0.62)
-      // the card is drawn up out of the pocket
-      .to(q(".env__card"), { yPercent: -58, duration: 1.1, ease: "power3.out" }, 0.95)
-      // a slight sway, as if pulled by hand, that settles back to straight
-      .to(q(".env__card"), { rotateZ: -1.4, duration: 0.55, ease: "sine.inOut" }, 0.95)
-      .to(q(".env__card"), { rotateZ: 0, duration: 0.65, ease: "sine.inOut" }, 1.5)
-      // its shadow deepens as it lifts toward the viewer
-      .to(
-        q(".env__card"),
-        { boxShadow: "0 44px 66px rgba(45, 28, 19, 0.42)", duration: 1, ease: "power2.out" },
-        0.95,
+      .to(q(".cover-seam"), { autoAlpha: 0, duration: 0.7, ease: "power1.in" }, 0.72)
+      // a warm gold bloom radiates from the opening
+      .fromTo(
+        q(".gold-bloom"),
+        { scale: 0.2, autoAlpha: 0 },
+        { scale: 1.5, autoAlpha: 0.9, duration: 0.5, ease: "power2.out" },
+        0.32,
       )
-      // gentle push-in, cross-fading into the site
-      .to(q(".intro__stage"), { scale: 1.14, duration: 1.05, ease: "power2.inOut" }, 1.65)
-      .add(reveal, 2.25)
-      .to(root, { autoAlpha: 0, duration: 0.85, ease: "power2.inOut" }, 2.5)
-      .add(onDone, 3.4);
+      .to(q(".gold-bloom"), { scale: 2.3, autoAlpha: 0, duration: 0.95, ease: "power2.in" }, 0.82)
+      // opens from the top: the top half lifts first, the bottom follows
+      .to(q(".cover-top"), { yPercent: -100, duration: 1.15, ease: "power3.inOut" }, 0.34)
+      .to(q(".cover-bottom"), { yPercent: 100, duration: 1.05, ease: "power3.inOut" }, 0.58)
+      // reveal the invitation as the seam widens
+      .add(reveal, 0.72)
+      .to(root, { autoAlpha: 0, duration: 0.45, ease: "power2.inOut" }, 1.5)
+      .add(onDone, 2);
   };
 
   return (
     <div className="intro" ref={rootRef} aria-label="Wedding invitation envelope">
-      <div className="intro__stage">
-        <div className="env">
-          <div className="env__back" />
-          <article className="env__card" aria-label="Undangan pernikahan Sophia dan Ahmad">
-            <p className="card-kicker">Undangan Pernikahan</p>
-            <h2 className="card-names">S&amp;A</h2>
-            <p className="card-detail">
-              Sophia &amp; Ahmad
-              <br />
-              24 Agustus 2026
-            </p>
-          </article>
-          <div className="env__front" aria-hidden="true" />
-          <div className="env__flap" aria-hidden="true" />
-          <div className="seal-wrap">
-            <button
-              className="seal"
-              type="button"
-              onClick={open}
-              aria-label="Buka undangan pernikahan Sophia dan Ahmad"
-            >
-              <img className="seal-img" src="/assets/wax-seal.svg" alt="" />
-            </button>
-          </div>
-        </div>
+      <div className="cover cover-top" aria-hidden="true">
+        <div className="cover-art" />
       </div>
+      <div className="cover cover-bottom" aria-hidden="true">
+        <div className="cover-art" />
+      </div>
+
+      <div className="gold-bloom" aria-hidden="true" />
+      <div className="cover-seam" aria-hidden="true" />
+
+      <div className="seal-wrap">
+        <button
+          className="seal"
+          type="button"
+          onClick={open}
+          aria-label="Buka undangan pernikahan Sophia dan Ahmad"
+        >
+          <img className="seal-img" src="/assets/wax-seal.svg" alt="" />
+        </button>
+      </div>
+
       <button className="tap-cue" type="button" onClick={open}>
-        Tap to open
+        <span>Tap to Open</span>
+        <i className="tap-cue__orn" aria-hidden="true" />
       </button>
     </div>
   );

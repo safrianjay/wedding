@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { gsap, useGSAP } from "./lib/gsap";
 import { EnvelopeIntro } from "./components/EnvelopeIntro";
-import { Hero } from "./components/Hero";
+import { SaveTheDate } from "./components/SaveTheDate";
 import { Countdown } from "./components/Countdown";
 import { OurStory } from "./components/OurStory";
 import { RsvpModal } from "./components/RsvpModal";
@@ -53,7 +53,7 @@ function App() {
       )}
 
       <main className={`site-shell${ready ? " is-ready" : ""}`} ref={shellRef}>
-        <Hero ready={ready} />
+        <SaveTheDate ready={ready} />
 
         <div className="main-content">
           {/* Pembuka — salam & ayat suci */}

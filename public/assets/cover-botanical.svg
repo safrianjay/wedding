@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <filter id="emboss" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="0.4" flood-color="#ffffff" flood-opacity="0.85" />
+    </filter>
+    <g id="sprig" fill="none" stroke="#d7c9b0" stroke-width="2.4" stroke-linecap="round">
+      <path d="M0 150 C 30 120 50 80 60 20" />
+      <path d="M22 104 C 40 92 64 94 80 104 C 62 118 38 116 22 104 Z" />
+      <path d="M34 72 C 52 60 76 62 92 72 C 74 86 50 84 34 72 Z" />
+      <path d="M14 122 C 0 112 -8 92 -6 74 C 10 84 20 104 14 122 Z" />
+      <path d="M28 90 C 14 80 6 60 8 42 C 24 52 34 72 28 90 Z" />
+      <path d="M60 20 C 70 30 70 46 60 56 C 52 44 52 30 60 20 Z" />
+    </g>
+    <g id="flower" fill="none" stroke="#d7c9b0" stroke-width="2.2">
+      <ellipse cx="0" cy="-16" rx="8" ry="16" />
+      <ellipse cx="0" cy="-16" rx="8" ry="16" transform="rotate(72)" />
+      <ellipse cx="0" cy="-16" rx="8" ry="16" transform="rotate(144)" />
+      <ellipse cx="0" cy="-16" rx="8" ry="16" transform="rotate(216)" />
+      <ellipse cx="0" cy="-16" rx="8" ry="16" transform="rotate(288)" />
+      <circle cx="0" cy="0" r="4" />
+    </g>
+  </defs>
+
+  <g filter="url(#emboss)">
+    <!-- top -->
+    <use href="#flower" transform="translate(470,180) scale(1.35)" />
+    <use href="#flower" transform="translate(612,306) scale(1)" />
+    <use href="#flower" transform="translate(330,330) scale(0.9)" />
+    <use href="#sprig" transform="translate(176,150) rotate(28) scale(1.1)" />
+    <use href="#sprig" transform="translate(840,150) rotate(-58) scale(1.1)" />
+
+    <!-- left edge -->
+    <use href="#sprig" transform="translate(70,560) rotate(10) scale(1.35)" />
+    <use href="#sprig" transform="translate(46,930) rotate(-14) scale(1.25)" />
+    <use href="#sprig" transform="translate(120,1300) rotate(24) scale(1.2)" />
+    <use href="#flower" transform="translate(150,770) scale(0.95)" />
+    <use href="#flower" transform="translate(118,1140) scale(0.85)" />
+
+    <!-- right edge -->
+    <use href="#sprig" transform="translate(1010,600) rotate(170) scale(1.35)" />
+    <use href="#sprig" transform="translate(1034,990) rotate(196) scale(1.25)" />
+    <use href="#sprig" transform="translate(966,1340) rotate(150) scale(1.2)" />
+    <use href="#flower" transform="translate(940,740) scale(0.95)" />
+    <use href="#flower" transform="translate(984,1180) scale(0.85)" />
+
+    <!-- bottom -->
+    <use href="#flower" transform="translate(384,1664) scale(1.15)" />
+    <use href="#sprig" transform="translate(636,1604) rotate(-160) scale(1.2)" />
+    <use href="#flower" transform="translate(706,1748) scale(0.9)" />
+    <use href="#sprig" transform="translate(250,1740) rotate(200) scale(1.05)" />
+  </g>
+</svg>

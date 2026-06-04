@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 360" width="340" height="360">
+<g fill="#f1ede2" stroke="#d8d0bf" stroke-width="2">
+<path d="M120 250 C 70 250 40 300 60 340 C 110 330 140 290 120 250 Z"/>
+<path d="M180 262 C 230 266 262 312 244 350 C 196 336 168 300 180 262 Z"/>
+</g>
+<g fill="none" stroke="#d8d0bf" stroke-width="1.6">
+<path d="M104 270 C 84 296 72 318 66 336"/>
+<path d="M196 280 C 216 304 228 326 234 344"/>
+</g>
+<g fill="#f4f0e7" stroke="#dcd5c6" stroke-width="2">
+<g transform="rotate(0.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(40.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(80.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(120.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(160.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(200.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(240.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(280.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+<g transform="rotate(320.0 170 150)"><ellipse cx="170" cy="78" rx="36" ry="60"/></g>
+</g>
+<g fill="#f4f0e7" stroke="#dcd5c6" stroke-width="2">
+<g transform="rotate(20.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+<g transform="rotate(65.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+<g transform="rotate(110.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+<g transform="rotate(155.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+<g transform="rotate(200.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+<g transform="rotate(245.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+<g transform="rotate(290.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+<g transform="rotate(335.0 170 150)"><ellipse cx="170" cy="104" rx="30" ry="50"/></g>
+</g>
+<g fill="#f4f0e7" stroke="#dcd5c6" stroke-width="2">
+<g transform="rotate(40.0 170 150)"><ellipse cx="170" cy="126" rx="22" ry="38"/></g>
+<g transform="rotate(100.0 170 150)"><ellipse cx="170" cy="126" rx="22" ry="38"/></g>
+<g transform="rotate(160.0 170 150)"><ellipse cx="170" cy="126" rx="22" ry="38"/></g>
+<g transform="rotate(220.0 170 150)"><ellipse cx="170" cy="126" rx="22" ry="38"/></g>
+<g transform="rotate(280.0 170 150)"><ellipse cx="170" cy="126" rx="22" ry="38"/></g>
+<g transform="rotate(340.0 170 150)"><ellipse cx="170" cy="126" rx="22" ry="38"/></g>
+</g>
+<circle cx="170" cy="150" r="20" fill="#efe9da" stroke="#dcd5c6" stroke-width="2"/>
+<g fill="#e6dfcd">
+<circle cx="179.0" cy="150.0" r="4.5"/>
+<circle cx="174.5" cy="157.8" r="4.5"/>
+<circle cx="165.5" cy="157.8" r="4.5"/>
+<circle cx="161.0" cy="150.0" r="4.5"/>
+<circle cx="165.5" cy="142.2" r="4.5"/>
+<circle cx="174.5" cy="142.2" r="4.5"/>
+</g></svg>
