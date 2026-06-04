@@ -54,6 +54,7 @@ function App() {
 
       <main className={`site-shell${ready ? " is-ready" : ""}`} ref={shellRef}>
         <SaveTheDate ready={ready} />
+        <Countdown />
 
         <div className="main-content">
           {/* Pembuka — salam & ayat suci */}
@@ -123,17 +124,6 @@ function App() {
           {/* Our Story — hanging polaroids */}
           <OurStory />
 
-          {/* Hitung mundur */}
-          <section className="content-band band-center reveal" aria-labelledby="countdownTitle">
-            <div className="content-inner">
-              <p className="section-kicker">Menghitung Hari</p>
-              <h2 className="section-title" id="countdownTitle">
-                Menuju Hari Bahagia
-              </h2>
-              <Countdown />
-            </div>
-          </section>
-
           {/* Akad & Resepsi */}
           <section className="content-band band-center reveal" aria-labelledby="acaraTitle">
             <div className="content-inner">
@@ -146,7 +136,7 @@ function App() {
                 <article className="detail-panel">
                   <h3>Akad Nikah</h3>
                   <div className="detail-list">
-                    <span>Sabtu, 24 Agustus 2026</span>
+                    <span>Senin, 21 Juni 2027</span>
                     <span>Pukul 09.00 &ndash; 10.00 WIB</span>
                     <span>Mangkunegaran Ballroom</span>
                     <span>The Dharmawangsa Jakarta</span>
@@ -158,7 +148,7 @@ function App() {
                 <article className="detail-panel">
                   <h3>Resepsi</h3>
                   <div className="detail-list">
-                    <span>Sabtu, 24 Agustus 2026</span>
+                    <span>Senin, 21 Juni 2027</span>
                     <span>Pukul 19.00 &ndash; 21.00 WIB</span>
                     <span>Majapahit Ballroom</span>
                     <span>The Dharmawangsa Jakarta</span>

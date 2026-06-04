@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const WEDDING_DATE = new Date("2026-08-24T00:00:00+07:00").getTime();
+const WEDDING_DATE = new Date("2027-06-21T00:00:00+07:00").getTime();
 
 type Parts = { days: number; hours: number; minutes: number; seconds: number };
 
@@ -26,23 +26,48 @@ export function Countdown() {
   }, []);
 
   return (
-    <div className="countdown" aria-live="polite">
-      <div className="time-box">
-        <strong>{parts.days}</strong>
-        <span>Hari</span>
+    <section className="countdown-clock-section" aria-label="Countdown to Sophia and Ahmad wedding">
+      <div className="clock-background" aria-hidden="true" />
+
+      <div className="countdown-content">
+        <header className="clock-title">
+          <div className="kicker">The Wedding of</div>
+          <h2>Sophia &amp; Ahmad</h2>
+        </header>
+
+        <div className="countdown-wrapper" aria-label="Countdown to Sophia and Ahmad wedding" aria-live="polite">
+          <div className="countdown-item">
+            <span className="countdown-number" id="clock-days">
+              {String(parts.days).padStart(2, "0")}
+            </span>
+            <span className="countdown-label">Days</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-number" id="clock-hours">
+              {pad(parts.hours)}
+            </span>
+            <span className="countdown-label">Hours</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-number" id="clock-minutes">
+              {pad(parts.minutes)}
+            </span>
+            <span className="countdown-label">Minutes</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-number" id="clock-seconds">
+              {pad(parts.seconds)}
+            </span>
+            <span className="countdown-label">Seconds</span>
+          </div>
+        </div>
+
+        <div className="below-copy">
+          <div className="script">Details of the day</div>
+          <p>Everything you need to know</p>
+          <div className="date">21.06.2027</div>
+        </div>
       </div>
-      <div className="time-box">
-        <strong>{pad(parts.hours)}</strong>
-        <span>Jam</span>
-      </div>
-      <div className="time-box">
-        <strong>{pad(parts.minutes)}</strong>
-        <span>Menit</span>
-      </div>
-      <div className="time-box">
-        <strong>{pad(parts.seconds)}</strong>
-        <span>Detik</span>
-      </div>
-    </div>
+    </section>
   );
 }

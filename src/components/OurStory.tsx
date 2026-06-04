@@ -20,7 +20,7 @@ const MOMENTS: Moment[] = [
   { caption: "Berpetualang", year: "2022", left: 63, top: 3, rot: 9, z: 2, tone: 3 },
   { caption: "Bertunangan", year: "2024", left: 14, top: 38, rot: 6, z: 3, tone: 4 },
   { caption: "Lamaran", year: "2025", left: 53, top: 40, rot: -7, z: 3, tone: 5 },
-  { caption: "Menuju Pelaminan", year: "2026", left: 38, top: 20, rot: -3, z: 5, tone: 6 },
+  { caption: "Menuju Pelaminan", year: "2027", left: 38, top: 20, rot: -3, z: 5, tone: 6 },
 ];
 
 export function OurStory() {
