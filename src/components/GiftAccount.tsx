@@ -20,9 +20,9 @@ export function GiftAccount({ bank, number, name }: Props) {
     <div className="gift-acc">
       <p className="gift-bank">{bank}</p>
       <p className="gift-number">{number}</p>
-      <p className="gift-name">a.n. {name}</p>
+      <p className="gift-name">Account name: {name}</p>
       <button className="ghost-button" type="button" onClick={copy}>
-        {copied ? "Tersalin ✓" : "Salin Nomor"}
+        {copied ? "Copied ✓" : "Copy Number"}
       </button>
     </div>
   );

@@ -110,7 +110,7 @@ export function EnvelopeIntro({ onReveal, onDone }: Props) {
           className="seal"
           type="button"
           onClick={open}
-          aria-label="Buka undangan pernikahan Sophia dan Ahmad"
+          aria-label="Open Sophia and Ahmad's wedding invitation"
         >
           <img className="seal-img" src="/assets/wax-seal.svg" alt="" />
         </button>

@@ -52,58 +52,58 @@ export function RsvpModal({ isOpen, onClose }: Props) {
         tabIndex={-1}
         ref={dialogRef}
       >
-        <button className="icon-button" type="button" aria-label="Tutup formulir RSVP" onClick={onClose}>
+        <button className="icon-button" type="button" aria-label="Close RSVP form" onClick={onClose}>
           &times;
         </button>
         <p className="section-kicker">Sophia &amp; Ahmad</p>
-        <h2 id="modalTitle">Konfirmasi Kehadiran</h2>
+        <h2 id="modalTitle">Confirm Your Attendance</h2>
         <form className="rsvp-form" onSubmit={handleSubmit}>
           {submitted && (
             <p className="success-message" tabIndex={-1}>
-              Terima kasih. Konfirmasi kehadiran Anda telah kami terima.
+              Thank you. We&rsquo;ve received your confirmation.
             </p>
           )}
 
           <div className="form-field">
-            <label htmlFor="guestName">Nama Lengkap</label>
+            <label htmlFor="guestName">Full Name</label>
             <input id="guestName" name="guestName" type="text" autoComplete="name" required />
           </div>
 
           <fieldset className="attendance">
-            <legend>Kehadiran</legend>
+            <legend>Attendance</legend>
             <div className="segmented">
               <label>
-                <input type="radio" name="attendance" value="hadir" defaultChecked />
-                Hadir
+                <input type="radio" name="attendance" value="yes" defaultChecked />
+                Attending
               </label>
               <label>
-                <input type="radio" name="attendance" value="tidak" />
-                Berhalangan
+                <input type="radio" name="attendance" value="no" />
+                Unable to Attend
               </label>
             </div>
           </fieldset>
 
           <div className="form-field">
-            <label htmlFor="guestCount">Jumlah Tamu</label>
-            <select id="guestCount" name="guestCount" defaultValue="1 orang">
-              <option>1 orang</option>
-              <option>2 orang</option>
-              <option>3 orang</option>
-              <option>4 orang</option>
+            <label htmlFor="guestCount">Number of Guests</label>
+            <select id="guestCount" name="guestCount" defaultValue="1 guest">
+              <option>1 guest</option>
+              <option>2 guests</option>
+              <option>3 guests</option>
+              <option>4 guests</option>
             </select>
           </div>
 
           <div className="form-field">
-            <label htmlFor="message">Ucapan &amp; Doa</label>
+            <label htmlFor="message">Wishes &amp; Blessings</label>
             <textarea
               id="message"
               name="message"
-              placeholder="Tuliskan ucapan dan doa terbaik untuk kedua mempelai"
+              placeholder="Share your warmest wishes and blessings for the couple"
             />
           </div>
 
           <button className="luxury-button" type="submit">
-            Kirim Konfirmasi
+            Send RSVP
           </button>
         </form>
       </section>

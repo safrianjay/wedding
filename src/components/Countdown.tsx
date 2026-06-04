@@ -37,34 +37,36 @@ export function Countdown() {
           <Ornament />
         </div>
 
-        <div className="countdown-wrapper" aria-label="Countdown to Sophia and Ahmad wedding" aria-live="polite">
-          <div className="countdown-item">
-            <span className="countdown-number" id="clock-days">
-              {String(parts.days).padStart(2, "0")}
-            </span>
-            <span className="countdown-label">Days</span>
+        <div className="countdown-meta">
+          <div className="countdown-wrapper" aria-label="Countdown to Sophia and Ahmad wedding" aria-live="polite">
+            <div className="countdown-item">
+              <span className="countdown-number" id="clock-days">
+                {String(parts.days).padStart(2, "0")}
+              </span>
+              <span className="countdown-label">Days</span>
+            </div>
+            <div className="countdown-item">
+              <span className="countdown-number" id="clock-hours">
+                {pad(parts.hours)}
+              </span>
+              <span className="countdown-label">Hours</span>
+            </div>
+            <div className="countdown-item">
+              <span className="countdown-number" id="clock-minutes">
+                {pad(parts.minutes)}
+              </span>
+              <span className="countdown-label">Minutes</span>
+            </div>
+            <div className="countdown-item">
+              <span className="countdown-number" id="clock-seconds">
+                {pad(parts.seconds)}
+              </span>
+              <span className="countdown-label">Seconds</span>
+            </div>
           </div>
-          <div className="countdown-item">
-            <span className="countdown-number" id="clock-hours">
-              {pad(parts.hours)}
-            </span>
-            <span className="countdown-label">Hours</span>
-          </div>
-          <div className="countdown-item">
-            <span className="countdown-number" id="clock-minutes">
-              {pad(parts.minutes)}
-            </span>
-            <span className="countdown-label">Minutes</span>
-          </div>
-          <div className="countdown-item">
-            <span className="countdown-number" id="clock-seconds">
-              {pad(parts.seconds)}
-            </span>
-            <span className="countdown-label">Seconds</span>
-          </div>
-        </div>
 
-        <p className="clock-date-detail">Monday, 21 June 2027</p>
+          <p className="clock-date-detail">Monday, 21 June 2027</p>
+        </div>
       </div>
     </section>
   );

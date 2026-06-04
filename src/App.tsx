@@ -51,40 +51,40 @@ function App() {
           {/* Story timeline */}
           <OurStory />
 
-          {/* Akad & Resepsi — both held at one venue */}
+          {/* Ceremony & Reception — both held at one venue */}
           <section className="content-band band-center reveal" aria-labelledby="acaraTitle">
             <div className="content-inner">
-              <p className="section-kicker">Waktu &amp; Tempat</p>
+              <p className="section-kicker">Time &amp; Place</p>
               <h2 className="section-title" id="acaraTitle">
-                Akad &amp; Resepsi
+                Ceremony &amp; Reception
               </h2>
               <Ornament />
 
               <div className="event-venue">
-                <p className="event-venue__date">Senin, 21 Juni 2027</p>
+                <p className="event-venue__date">Monday, 21 June 2027</p>
                 <h3 className="event-venue__name">The Dharmawangsa Jakarta</h3>
                 <p className="event-venue__addr">
-                  Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta Selatan
+                  Jl. Brawijaya Raya No. 26, Kebayoran Baru, South Jakarta
                 </p>
               </div>
 
               <div className="event-grid">
                 <article className="event-card">
-                  <p className="event-card__label">Akad Nikah</p>
-                  <p className="event-card__time">09.00 &ndash; 10.00 WIB</p>
+                  <p className="event-card__label">The Ceremony</p>
+                  <p className="event-card__time">09:00 &ndash; 10:00 WIB</p>
                   <p className="event-card__room">Mangkunegaran Ballroom</p>
                 </article>
                 <span className="event-divider" aria-hidden="true" />
                 <article className="event-card">
-                  <p className="event-card__label">Resepsi</p>
-                  <p className="event-card__time">19.00 &ndash; 21.00 WIB</p>
+                  <p className="event-card__label">The Reception</p>
+                  <p className="event-card__time">19:00 &ndash; 21:00 WIB</p>
                   <p className="event-card__room">Majapahit Ballroom</p>
                 </article>
               </div>
 
               <div className="button-row button-row--center">
                 <a className="luxury-button" href={MAPS_URL} target="_blank" rel="noreferrer">
-                  Buka Peta
+                  Open Map
                 </a>
               </div>
             </div>
@@ -93,14 +93,14 @@ function App() {
           {/* Dress code */}
           <section className="content-band dress-band band-center reveal" aria-labelledby="dressTitle">
             <div className="content-inner">
-              <p className="section-kicker">Tata Busana</p>
+              <p className="section-kicker">Attire</p>
               <h2 className="section-title" id="dressTitle">
                 Dress Code
               </h2>
               <Ornament />
               <p className="dress-copy">
-                Dengan penuh hormat, kami mengundang Anda mengenakan busana formal dalam palet
-                lembut berikut &mdash; sage, taupe hangat, ivory, mauve, dan dusty blue.
+                With the warmest regards, we kindly invite you to wear formal attire in the
+                following soft palette &mdash; sage, warm taupe, ivory, mauve, and dusty blue.
               </p>
               <div className="palette" aria-label="Palet dress code">
                 <span className="swatch" style={{ background: "#9aa687" }} title="Sage Green" />
@@ -112,51 +112,51 @@ function App() {
             </div>
           </section>
 
-          {/* Lokasi & Tanda kasih */}
+          {/* Venue & RSVP */}
           <section className="content-band reveal" aria-labelledby="rsvpTitle">
             <div className="content-inner rsvp-location-grid">
               <article className="rsvp-panel">
-                <p className="section-kicker">Lokasi Acara</p>
+                <p className="section-kicker">The Venue</p>
                 <h3 id="rsvpTitle">The Dharmawangsa Jakarta</h3>
                 <Ornament className="ornament--left" />
                 <p className="fine-copy">
-                  Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta Selatan, Indonesia.
+                  Jl. Brawijaya Raya No. 26, Kebayoran Baru, South Jakarta, Indonesia.
                 </p>
                 <div className="button-row">
                   <a className="luxury-button" href={MAPS_URL} target="_blank" rel="noreferrer">
-                    Buka Google Maps
+                    Open Google Maps
                   </a>
                 </div>
               </article>
 
               <article className="location-panel">
-                <p className="section-kicker">Konfirmasi Kehadiran</p>
+                <p className="section-kicker">Confirm Your Attendance</p>
                 <h3>RSVP</h3>
                 <Ornament className="ornament--left" />
                 <p className="fine-copy">
-                  Kehadiran Anda adalah kebahagiaan bagi kami. Mohon konfirmasikan kehadiran Anda
-                  agar kami dapat mempersiapkan hari istimewa ini dengan sebaik-baiknya.
+                  Your presence would be the greatest gift to us. Kindly confirm your attendance
+                  so we can prepare this special day as best we can.
                 </p>
                 <div className="button-row">
                   <button className="luxury-button" type="button" onClick={() => setRsvpOpen(true)}>
-                    Konfirmasi Sekarang
+                    RSVP Now
                   </button>
                 </div>
               </article>
             </div>
           </section>
 
-          {/* Tanda kasih / amplop digital */}
+          {/* Wedding gift / digital envelope */}
           <section className="content-band band-center reveal" aria-labelledby="giftTitle">
             <div className="content-inner">
-              <p className="section-kicker">Tanda Kasih</p>
+              <p className="section-kicker">With Love</p>
               <h2 className="section-title" id="giftTitle">
                 Wedding Gift
               </h2>
               <Ornament />
               <p className="band-intro">
-                Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun apabila
-                memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya melalui:
+                Your prayers and blessings already mean the world to us. But should you wish to
+                express your love with a gift, you may send it through:
               </p>
               <div className="gift-grid">
                 <GiftAccount bank="Bank BCA" number="1234 5678 90" name="Sophia Aurelia" />
@@ -165,24 +165,24 @@ function App() {
             </div>
           </section>
 
-          {/* Penutup */}
+          {/* Closing */}
           <section className="content-band closing-band band-center reveal" aria-labelledby="closingTitle">
             <div className="content-inner">
-              <p className="section-kicker">Penutup</p>
+              <p className="section-kicker">Closing</p>
               <h2 className="section-title" id="closingTitle">
-                Doa &amp; Restu
+                Prayers &amp; Blessings
               </h2>
               <Ornament />
               <p className="closing-copy">
-                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
-                berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+                It would be an honor and a joy for us if you would join us to share your prayers
+                and blessings for the bride and groom.
               </p>
               <p className="closing-salam">Wassalamu&rsquo;alaikum Warahmatullahi Wabarakatuh.</p>
-              <p className="closing-from">Kami yang berbahagia,</p>
+              <p className="closing-from">With love and joy,</p>
               <p className="closing-families">
-                Keluarga Besar Bapak H. Bambang Wijaya
+                The Family of Mr. H. Bambang Wijaya
                 <br />
-                &amp; Keluarga Besar Bapak H. Surya Darmawan
+                &amp; The Family of Mr. H. Surya Darmawan
               </p>
             </div>
           </section>
@@ -190,7 +190,7 @@ function App() {
 
         <footer className="footer">
           <strong>Sophia &amp; Ahmad</strong>
-          <span>Dengan penuh cinta, bersama keluarga kami</span>
+          <span>With all our love, together with our families</span>
         </footer>
       </main>
 

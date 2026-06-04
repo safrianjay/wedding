@@ -28,7 +28,7 @@ const BOARD: BoardPhoto[] = [
 ];
 
 const MEMORY_INTRO =
-  "Dari pertemuan pertama hingga hari yang kami nantikan — setiap kenangan kecil menuntun kami menuju satu janji yang abadi.";
+  "From the day we first met to the day we've long awaited — every little memory has led us toward one timeless promise.";
 
 const MEMORIES: Memory[] = [
   {
@@ -168,7 +168,7 @@ export function OurStory() {
     <section className="content-band band-center story-section" ref={root} aria-labelledby="storyTitle">
       <div className="content-inner">
         <div className="story-head">
-          <p className="section-kicker">Perjalanan Cinta</p>
+          <p className="section-kicker">Our Journey</p>
           <h2 className="section-title" id="storyTitle">
             Our Story
           </h2>
