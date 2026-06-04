@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap, useGSAP } from "../lib/gsap";
+import { Ornament } from "./Ornament";
 
 type Memory = {
   caption: string;
@@ -124,6 +125,7 @@ export function OurStory() {
           <h2 className="section-title" id="storyTitle">
             Our Story
           </h2>
+          <Ornament />
         </div>
 
         <section

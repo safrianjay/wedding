@@ -6,19 +6,10 @@ import { Countdown } from "./components/Countdown";
 import { OurStory } from "./components/OurStory";
 import { RsvpModal } from "./components/RsvpModal";
 import { GiftAccount } from "./components/GiftAccount";
+import { Ornament } from "./components/Ornament";
 
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=The+Dharmawangsa+Jakarta";
-
-function Ornament() {
-  return (
-    <div className="ornament" aria-hidden="true">
-      <span />
-      <span className="ornament__diamond" />
-      <span />
-    </div>
-  );
-}
 
 function App() {
   const [introGone, setIntroGone] = useState(false);
@@ -106,6 +97,7 @@ function App() {
               <h2 className="section-title" id="dressTitle">
                 Dress Code
               </h2>
+              <Ornament />
               <p className="dress-copy">
                 Dengan penuh hormat, kami mengundang Anda mengenakan busana formal dalam palet
                 lembut berikut &mdash; sage, taupe hangat, ivory, mauve, dan dusty blue.
@@ -126,6 +118,7 @@ function App() {
               <article className="rsvp-panel">
                 <p className="section-kicker">Lokasi Acara</p>
                 <h3 id="rsvpTitle">The Dharmawangsa Jakarta</h3>
+                <Ornament className="ornament--left" />
                 <p className="fine-copy">
                   Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta Selatan, Indonesia.
                 </p>
@@ -139,6 +132,7 @@ function App() {
               <article className="location-panel">
                 <p className="section-kicker">Konfirmasi Kehadiran</p>
                 <h3>RSVP</h3>
+                <Ornament className="ornament--left" />
                 <p className="fine-copy">
                   Kehadiran Anda adalah kebahagiaan bagi kami. Mohon konfirmasikan kehadiran Anda
                   agar kami dapat mempersiapkan hari istimewa ini dengan sebaik-baiknya.
@@ -159,6 +153,7 @@ function App() {
               <h2 className="section-title" id="giftTitle">
                 Wedding Gift
               </h2>
+              <Ornament />
               <p className="band-intro">
                 Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun apabila
                 memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya melalui:

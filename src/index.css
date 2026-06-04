@@ -346,12 +346,11 @@ h1 {
 
 .countdown-clock-section {
   position: relative;
-  min-height: clamp(420px, 56svh, 580px);
   width: 100%;
   overflow: hidden;
   display: grid;
   place-items: center;
-  padding: clamp(18px, 3svh, 38px) clamp(14px, 4vw, 28px) clamp(26px, 4.5svh, 46px);
+  padding: clamp(28px, 4.5svh, 48px) clamp(14px, 4vw, 28px) clamp(30px, 4.5svh, 48px);
   background:
     radial-gradient(circle at 50% 13%, rgba(255, 255, 255, 0.64), transparent 34%),
     linear-gradient(180deg, #efe3d3 0%, #f4ecdd 12%, var(--paper) 34%, var(--paper) 62%, var(--ivory-deep) 100%);
@@ -391,12 +390,13 @@ h1 {
 .countdown-content {
   position: relative;
   z-index: 2;
+  min-height: clamp(520px, 70svh, 660px);
   width: min(94vw, 680px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: clamp(22px, 4svh, 44px);
+  justify-content: space-between;
+  gap: clamp(16px, 2.5svh, 28px);
 }
 
 .countdown-head {
@@ -776,6 +776,13 @@ h1 {
   height: 7px;
   background: var(--gold);
   transform: rotate(45deg);
+}
+
+/* Left-aligned variant — used as a divider inside left-aligned cards. */
+.ornament--left {
+  justify-content: flex-start;
+  max-width: 180px;
+  margin: 0.55rem 0 1.15rem;
 }
 
 .couple-grid {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Ornament } from "./Ornament";
 
 const WEDDING_DATE = new Date("2027-06-21T00:00:00+07:00").getTime();
 
@@ -33,6 +34,7 @@ export function Countdown() {
         <div className="countdown-head">
           <p className="countdown-kicker">Counting Down To</p>
           <h2 className="countdown-title">The Wonderful Date</h2>
+          <Ornament />
         </div>
 
         <div className="countdown-wrapper" aria-label="Countdown to Sophia and Ahmad wedding" aria-live="polite">
