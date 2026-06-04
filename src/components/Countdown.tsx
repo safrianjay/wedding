@@ -30,11 +30,6 @@ export function Countdown() {
       <div className="clock-background" aria-hidden="true" />
 
       <div className="countdown-content">
-        <header className="clock-title">
-          <div className="kicker">The Wedding of</div>
-          <h2>Sophia &amp; Ahmad</h2>
-        </header>
-
         <div className="countdown-wrapper" aria-label="Countdown to Sophia and Ahmad wedding" aria-live="polite">
           <div className="countdown-item">
             <span className="countdown-number" id="clock-days">
@@ -60,12 +55,6 @@ export function Countdown() {
             </span>
             <span className="countdown-label">Seconds</span>
           </div>
-        </div>
-
-        <div className="below-copy">
-          <div className="script">Details of the day</div>
-          <p>Everything you need to know</p>
-          <div className="date">21.06.2027</div>
         </div>
       </div>
     </section>

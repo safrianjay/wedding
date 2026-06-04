@@ -57,30 +57,6 @@ function App() {
         <Countdown />
 
         <div className="main-content">
-          {/* Pembuka — salam & ayat suci */}
-          <section className="content-band band-center reveal" aria-labelledby="ayahTitle">
-            <div className="content-inner">
-              <p className="section-kicker">Bismillahirrahmanirrahim</p>
-              <h2 className="section-title" id="ayahTitle">
-                Assalamu&rsquo;alaikum Wr. Wb.
-              </h2>
-              <Ornament />
-              <p className="ayah-arabic" lang="ar" dir="rtl">
-                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا
-                إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ
-                لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
-              </p>
-              <p className="ayah-translation">
-                &ldquo;Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
-                pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa
-                tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.
-                Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang
-                berpikir.&rdquo;
-              </p>
-              <p className="ayah-cite">Q.S. Ar-Rum : 21</p>
-            </div>
-          </section>
-
           {/* Mempelai */}
           <section className="content-band band-center reveal" aria-labelledby="coupleTitle">
             <div className="content-inner">
